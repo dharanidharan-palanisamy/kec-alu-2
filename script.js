@@ -421,6 +421,15 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        const placeholder = document.querySelector('.video-placeholder');
+        if (placeholder) placeholder.style.display = 'none';
+        
+        const videoEl = document.getElementById('reveal-video');
+        if (videoEl) {
+            videoEl.style.opacity = '1';
+        }
+    }
     if (event.data === YT.PlayerState.ENDED) {
         goToNextPage();
     }

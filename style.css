@@ -1712,6 +1712,16 @@ body {
         top: -30px !important;
     }
     
+    /* Video Mobile Fixes */
+    .video-placeholder {
+        pointer-events: none !important;
+    }
+    
+    #reveal-video {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    
    
     .hero-headline {
         font-size: 2.2rem !important;
