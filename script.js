@@ -428,7 +428,7 @@ function onPlayerStateChange(event) {
 
 function goToNextPage() {
     const videoPage = document.getElementById('video-page');
-    const featuresPage = document.getElementById('features-page');
+    const legacyPage = document.getElementById('legacy-page');
     
     if (videoPage) {
         gsap.to(videoPage, {
@@ -437,12 +437,71 @@ function goToNextPage() {
             ease: "power2.inOut",
             onComplete: () => {
                 videoPage.classList.remove('active');
-                if (featuresPage) {
-                    featuresPage.classList.add('active');
-                    gsap.fromTo(featuresPage, { opacity: 0 }, { opacity: 1, duration: 1.0 });
+                if (legacyPage) {
+                    legacyPage.style.display = 'block';
+                    legacyPage.classList.add('active');
+                    gsap.fromTo(legacyPage, { opacity: 0 }, { opacity: 1, duration: 1.0, onComplete: playLegacyAnimations });
                 }
             }
         });
+    }
+}
+
+function playLegacyAnimations() {
+    const title = document.getElementById('legacy-title');
+    if (!title) return;
+    
+    const originalTitle = title.innerText;
+    title.innerHTML = '';
+    originalTitle.split(' ').forEach((word, wIdx) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.style.display = 'inline-block';
+        wordSpan.style.whiteSpace = 'nowrap';
+
+        word.split('').forEach(char => {
+            const charSpan = document.createElement('span');
+            charSpan.innerText = char;
+            charSpan.style.display = 'inline-block';
+            charSpan.style.opacity = 0;
+            charSpan.style.transform = 'translateY(50px) scale(0.6) rotate(15deg)';
+            charSpan.style.filter = 'blur(10px)';
+            wordSpan.appendChild(charSpan);
+        });
+        title.appendChild(wordSpan);
+
+        if (wIdx < originalTitle.split(' ').length - 1) {
+            const space = document.createElement('span');
+            space.innerHTML = '&nbsp;';
+            title.appendChild(space);
+        }
+    });
+
+    // Animate character spans
+    gsap.to('#legacy-title span span', {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        rotate: 0,
+        filter: 'blur(0px)',
+        duration: 1.2,
+        stagger: 0.05,
+        ease: "back.out(1.7)"
+    });
+
+    // Supporting text animation (Fade Up + Opacity + Blur)
+    const desc = document.getElementById('legacy-desc');
+    gsap.fromTo(desc,
+        { opacity: 0, y: 30, filter: 'blur(10px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, delay: 0.8, ease: "power2.out" }
+    );
+
+    // CTA Button Reveal
+    const ctaBtn = document.getElementById('explore-cta-btn');
+    if (ctaBtn) {
+        gsap.fromTo(ctaBtn,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 1.0, delay: 1.2, ease: "power2.out", onComplete: typeof initCtaInteractions !== 'undefined' ? initCtaInteractions : undefined }
+        );
     }
 }
 
