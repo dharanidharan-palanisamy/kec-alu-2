@@ -402,7 +402,7 @@ let isPlayerReady = false;
 
 function onYouTubeIframeAPIReady() {
     ytPlayer = new YT.Player('reveal-video', {
-        videoId: '_XYPymhHxu0',
+        videoId: 'c1CGLbLwrlE',
         playerVars: {
             'playsinline': 1,
             'rel': 0,
