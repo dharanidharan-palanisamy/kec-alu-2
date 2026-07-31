@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreLaunch</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Global Logo -->
+    <img src="org kec.png" alt="KEC Logo" class="global-logo">
+
+    <!-- Intro Sequence Overlay -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="particles-bg"></div>
+        <header class="intro-header">
+            <div class="intro-brand"><span class="gold-dot"></span></div>
+        </header>
+        <div class="intro-center">
+            <h1 id="intro-text" class="intro-text">You left the campus</h1>
+        </div>
+        <div class="intro-progress">
+            <div class="progress-bar active"></div>
+            <div class="progress-bar"></div>
+            <div class="progress-bar"></div>
+            <div class="progress-bar"></div>
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Hero / Intro Section -->
+    <section class="hero-section">
+        <div class="particles-bg"></div>
+        <div class="hero-content">
+            <button id="unmute-btn" class="unmute-btn" onclick="initAudio()" style="display: none;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+                Tap to Unmute
+            </button>
+            <span class="eyebrow" style="margin-bottom: 2rem;">T - M I N U S &nbsp; T O &nbsp; R E V E A L</span>
+
+            <h1 class="hero-headline">The network is <span class="gold-text">about to change</span><br>the way you stay connected.</h1>
+
+            <div class="countdown-container boxed">
+                <div class="timer boxed-timer" id="countdown-timer">
+                    <div class="time-block">
+                        <div class="time-box"><span class="time-val" id="days">00</span></div>
+                        <span class="time-label">DAYS</span>
+                    </div>
+                    <div class="time-block">
+                        <div class="time-box"><span class="time-val" id="hours">00</span></div>
+                        <span class="time-label">HOURS</span>
+                    </div>
+                    <div class="time-block">
+                        <div class="time-box"><span class="time-val" id="minutes">00</span></div>
+                        <span class="time-label">MINUTES</span>
+                    </div>
+                    <div class="time-block">
+                        <div class="time-box"><span class="time-val" id="seconds">00</span></div>
+                        <span class="time-label">SECONDS</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="hero-desc">Be among the first to witness the future.</p>
+
+            <!-- 3D Mushroom Push Button Widget -->
+            <div class="button-3d-wrapper">
+                <div class="button-collar">
+                    <button id="main-launch-btn" class="launch-btn-3d" onclick="initAudio(); scrollToFeatures();" disabled></button>
+                </div>
+                <span class="panel-label bottom-label">PUSH IN TO LAUNCH</span>
+            </div>
+
+            <span class="target-date">T A R G E T &nbsp;&middot;&nbsp; J U N E &nbsp; 2 1 &nbsp;&middot;&nbsp; 2 0 2
+                6</span>
+        </div>
+        </div>
+    </section>
+
+    <!-- Cracker & Countdown Overlay -->
+    <div id="cracker-overlay" class="cracker-overlay">
+        <div id="countdown-text" class="countdown-text"></div>
+        <canvas id="firework-canvas" class="firework-canvas"></canvas>
+    </div>
+
+
+    <!-- Video Page -->
+    <div id="video-page" class="video-page">
+        <div class="particles-bg"></div>
+        <div class="video-container" style="position: relative;">
+            <div id="reveal-video"></div>
+
+            <div class="video-placeholder" style="position: relative; z-index: 10;">
+                <button class="play-btn" onclick="playVideo()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </button>
+                <h2 class="video-title">Brand Reveal Film</h2>
+                <p class="video-subtitle">VIDEO PLACEHOLDER - 16:9</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Awwwards Morphing Logo Transition Overlay -->
+    <div id="transition-overlay" class="transition-overlay">
+        <!-- Background elements -->
+        <div class="mesh-gradient"></div>
+        <div class="aurora-glow bg-blue"></div>
+        <div class="aurora-glow bg-gold"></div>
+        <div class="noise-overlay"></div>
+        
+        <!-- Canvas for particle logo -->
+        <canvas id="logo-canvas"></canvas>
+    </div>
+
+    <!-- Features / Next Page -->
+    <div id="features-page" class="features-page">
+        <div class="features-header">
+            <h1 class="features-logo">Welcome</h1>
+            <p class="features-tagline">To the Next Chapter</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="cert_data.js"></script>
+    <script src="logo_points.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
